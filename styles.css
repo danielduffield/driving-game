@@ -3,3 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+#player-car {
+  height: 50px;
+  width: 100px;
+  background-color: black;
+}
