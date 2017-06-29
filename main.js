@@ -53,3 +53,5 @@ class Car {
 function getSideFromHypotenuse(hypot) {
   return Math.floor(((hypot ** 2) / 2) ** 0.5)
 }
+
+const playerCar = new Car('east', 1, [0, 0])
