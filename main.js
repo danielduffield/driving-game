@@ -12,6 +12,9 @@ class Car {
   accelerate(acceleration) {
     this.speed += acceleration
   }
+  deccelerate(decceleration) {
+    this.speed -= decceleration
+  }
   move() {
     // using traditional coordinate system with (0, 0) at center
     switch (this.direction) {
