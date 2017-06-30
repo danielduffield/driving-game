@@ -17,7 +17,7 @@ class Car {
   }
   decelerate() {
     if (this.speed > 10) {
-      this.speed += 10
+      this.speed -= 10
     }
   }
   move() {
@@ -74,6 +74,19 @@ function getSideFromHypotenuse(hypot) {
 
 const userCar = new Car('east', 30, [1000, 1000])
 
+const keyMap = {
+  KeyW: 'north',
+  KeyA: 'west',
+  KeyS: 'south',
+  KeyD: 'east'
+}
+
+const speedKeys = {
+  ArrowUp: 'accelerate',
+  ArrowDown: 'decelerate',
+  Space: 'start'
+}
+
 const game = {
   playerCar: userCar,
   playerStatus: {
@@ -84,22 +97,15 @@ const game = {
 }
 
 document.body.addEventListener('keydown', event => {
-  console.log(event.code)
-  if (event.code === 'Space') {
-    game.playerCar.start()
+  for (const key in speedKeys) {
+    if (event.code === key) {
+      console.log(event.code, key)
+      game.playerCar[speedKeys[key]]()
+    }
   }
-  if (game.playerStatus.ignition) {
-    if (event.code === 'KeyW') {
-      game.playerCar.turn('north')
-    }
-    if (event.code === 'KeyA') {
-      game.playerCar.turn('west')
-    }
-    if (event.code === 'KeyS') {
-      game.playerCar.turn('south')
-    }
-    if (event.code === 'KeyD') {
-      game.playerCar.turn('east')
+  for (const key in keyMap) {
+    if (event.code === key) {
+      game.playerCar.turn(keyMap[key])
     }
   }
 })
