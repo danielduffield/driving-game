@@ -65,7 +65,7 @@ function getSideFromHypotenuse(hypot) {
   return Math.floor(((hypot ** 2) / 2) ** 0.5)
 }
 
-const userCar = new Car('east', 10, [1000, 1000])
+const userCar = new Car('east', 30, [1000, 1000])
 
 const game = {
   playerCar: userCar,
@@ -77,8 +77,23 @@ const game = {
 }
 
 document.body.addEventListener('keydown', event => {
+  console.log(event.code)
   if (event.code === 'Space') {
     game.playerCar.start()
+  }
+  if (game.playerStatus.ignition) {
+    if (event.code === 'KeyW') {
+      game.playerCar.turn('north')
+    }
+    if (event.code === 'KeyA') {
+      game.playerCar.turn('west')
+    }
+    if (event.code === 'KeyS') {
+      game.playerCar.turn('south')
+    }
+    if (event.code === 'KeyD') {
+      game.playerCar.turn('east')
+    }
   }
 })
 
