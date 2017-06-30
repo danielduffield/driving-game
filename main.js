@@ -77,8 +77,21 @@ const game = {
 }
 
 document.body.addEventListener('keydown', event => {
+  console.log(event.code)
   if (event.code === 'Space') {
     game.playerCar.start()
+  }
+  if (event.code === 'KeyW') {
+    game.playerCar.turn('north')
+  }
+  if (event.code === 'KeyA') {
+    game.playerCar.turn('west')
+  }
+  if (event.code === 'KeyS') {
+    game.playerCar.turn('south')
+  }
+  if (event.code === 'KeyD') {
+    game.playerCar.turn('east')
   }
 })
 
