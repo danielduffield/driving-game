@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#landing {
+  position: absolute;
+  background-color: whitesmoke;
+  height: 100%;
+  width: 100%;
+}
+
+#player-car {
+  height: 110px;
+  width: 56px;
+  top: 500px;
+  left: 100px;
+  position: relative;
+  background-image: url(images/player-car-sprite.png);
+  background-repeat: no-repeat;
+  transform: rotate(90deg);
+}
