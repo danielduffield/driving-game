@@ -47,10 +47,10 @@ class Car {
     }
     game.$car = renderCar(this)
   }
-  static start(car) {
-    if (!car.hasBeenStarted) {
-      const startInterval = setInterval(function () {
-        car.move()
+  start() {
+    if (!this.hasBeenStarted) {
+      const startInterval = setInterval(() => {
+        this.move()
       }, 16)
     }
   }
@@ -69,7 +69,7 @@ const game = {
 
 document.body.addEventListener('keydown', event => {
   if (event.code === 'Space') {
-    Car.start(game.playerCar)
+    game.playerCar.start()
     game.playerCar.hasBeenStarted = true
   }
 })
