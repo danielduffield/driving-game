@@ -48,10 +48,11 @@ class Car {
     game.$car = renderCar(this)
   }
   start() {
-    if (!this.hasBeenStarted) {
-      const startInterval = setInterval(() => {
+    if (!game.playerStatus.ignition) {
+      game.playerStatus.ignitionTimer = setInterval(() => {
         this.move()
       }, 16)
+      game.playerStatus.ignition = true
     }
   }
 }
@@ -64,13 +65,16 @@ const userCar = new Car('east', 10, [1000, 1000])
 
 const game = {
   playerCar: userCar,
+  playerStatus: {
+    ignition: false,
+    ignitionTimer: null
+  },
   driveArea: document.getElementById('drive-area')
 }
 
 document.body.addEventListener('keydown', event => {
   if (event.code === 'Space') {
     game.playerCar.start()
-    game.playerCar.hasBeenStarted = true
   }
 })
 
