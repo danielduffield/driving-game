@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 
 class Car {
-  constructor(direction, speed, location) {
+  constructor(direction, speed, location, hasBeenStarted) {
     this.direction = direction
     this.speed = speed
     this.location = location
+    this.hasBeenStarted = false
   }
   turn(direction) {
     this.direction = direction
@@ -44,12 +45,14 @@ class Car {
         this.location[1] -= this.speed
         break
     }
-    renderCar(this)
+    game.$car = renderCar(this)
   }
   static start(car) {
-    setInterval(function () {
-      car.move()
-    }, 16)
+    if (!car.hasBeenStarted) {
+      const startInterval = setInterval(function () {
+        car.move()
+      }, 16)
+    }
   }
 }
 
@@ -67,6 +70,7 @@ const game = {
 document.body.addEventListener('keydown', event => {
   if (event.code === 'Space') {
     Car.start(game.playerCar)
+    game.playerCar.hasBeenStarted = true
   }
 })
 
