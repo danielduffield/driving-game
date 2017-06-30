@@ -54,6 +54,10 @@ class Car {
       }, 16)
       game.playerStatus.ignition = true
     }
+    else {
+      clearInterval(game.playerStatus.ignitionTimer)
+      game.playerStatus.ignition = false
+    }
   }
 }
 
