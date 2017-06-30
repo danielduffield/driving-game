@@ -13,28 +13,28 @@ class Car {
     this.speed += acceleration
   }
   move() {
-    // using traditional coordinate system with (0, 0) at center
+    // using viewport coordinate system with (0, 0) at top-left
     switch (this.direction) {
       case 'north':
-        this.location[0] += this.speed
+        this.location[0] -= this.speed
         break
       case 'north-east':
-        this.location[0] += getSideFromHypotenuse(this.speed)
+        this.location[0] -= getSideFromHypotenuse(this.speed)
         this.location[1] += getSideFromHypotenuse(this.speed)
         break
       case 'north-west':
-        this.location[0] += getSideFromHypotenuse(this.speed)
+        this.location[0] -= getSideFromHypotenuse(this.speed)
         this.location[1] -= getSideFromHypotenuse(this.speed)
         break
       case 'south':
-        this.location[0] -= this.speed
+        this.location[0] += this.speed
         break
       case 'south-east':
-        this.location[0] -= getSideFromHypotenuse(this.speed)
+        this.location[0] += getSideFromHypotenuse(this.speed)
         this.location[1] += getSideFromHypotenuse(this.speed)
         break
       case 'south-west':
-        this.location[0] -= getSideFromHypotenuse(this.speed)
+        this.location[0] += getSideFromHypotenuse(this.speed)
         this.location[1] -= getSideFromHypotenuse(this.speed)
         break
       case 'east':
@@ -48,7 +48,7 @@ class Car {
   static start(car) {
     setInterval(function () {
       car.move()
-    }, 32)
+    }, 1000)
   }
 }
 
@@ -57,7 +57,7 @@ function getSideFromHypotenuse(hypot) {
 }
 
 const game = {
-  playerCar: new Car('east', 1, [0, 0]),
+  playerCar: new Car('east', 1, [50, 50]),
   $playerCar: document.getElementById('player-car')
 }
 
