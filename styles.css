@@ -5,7 +5,8 @@
 }
 
 #player-car {
-  height: 50px;
-  width: 100px;
-  background-color: black;
+  height: 110px;
+  width: 56px;
+  background-image: url(images/player-car-sprite.png);
+  background-repeat: no-repeat;
 }
