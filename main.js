@@ -10,8 +10,15 @@ class Car {
   turn(direction) {
     this.direction = direction
   }
-  accelerate(acceleration) {
-    this.speed += acceleration
+  accelerate() {
+    if (this.speed < 100) {
+      this.speed += 10
+    }
+  }
+  decelerate() {
+    if (this.speed > 10) {
+      this.speed += 10
+    }
   }
   move() {
     // using viewport coordinate system with (0, 0) at top-left
