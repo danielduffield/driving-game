@@ -44,11 +44,12 @@ class Car {
         this.location[1] -= this.speed
         break
     }
+    renderCar(this)
   }
   static start(car) {
     setInterval(function () {
       car.move()
-    }, 1000)
+    }, 16)
   }
 }
 
@@ -56,9 +57,11 @@ function getSideFromHypotenuse(hypot) {
   return Math.floor(((hypot ** 2) / 2) ** 0.5)
 }
 
+const userCar = new Car('east', 10, [1000, 1000])
+
 const game = {
-  playerCar: new Car('east', 1, [50, 50]),
-  $playerCar: document.getElementById('player-car')
+  playerCar: userCar,
+  driveArea: document.getElementById('drive-area')
 }
 
 document.body.addEventListener('keydown', event => {
@@ -66,3 +69,17 @@ document.body.addEventListener('keydown', event => {
     Car.start(game.playerCar)
   }
 })
+
+function renderCar(car) {
+  const $oldRender = document.getElementById('player-car')
+  game.driveArea.removeChild($oldRender)
+  console.log(car.location)
+  const [y, x] = car.location
+  const $car = document.createElementNS('http://www.w3.org/2000/svg', 'rect')
+  $car.id = 'player-car'
+  $car.setAttribute('height', 500)
+  $car.setAttribute('width', 500)
+  $car.setAttribute('x', x)
+  $car.setAttribute('y', y)
+  game.driveArea.appendChild($car)
+}
