@@ -48,10 +48,21 @@ class Car {
   static start(car) {
     setInterval(function () {
       car.move()
-    }, 16)
+    }, 32)
   }
 }
 
 function getSideFromHypotenuse(hypot) {
   return Math.floor(((hypot ** 2) / 2) ** 0.5)
 }
+
+const game = {
+  playerCar: new Car('east', 1, [0, 0]),
+  $playerCar: document.getElementById('player-car')
+}
+
+document.body.addEventListener('keydown', event => {
+  if (event.code === 'Space') {
+    Car.start(game.playerCar)
+  }
+})
