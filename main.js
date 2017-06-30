@@ -65,7 +65,7 @@ function getSideFromHypotenuse(hypot) {
   return Math.floor(((hypot ** 2) / 2) ** 0.5)
 }
 
-const userCar = new Car('east', 10, [1000, 1000])
+const userCar = new Car('east', 30, [1000, 1000])
 
 const game = {
   playerCar: userCar,
